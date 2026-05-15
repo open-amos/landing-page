@@ -288,26 +288,21 @@ h1.hero-h .fade {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
-    z-index: 2;
+    z-index: 3;
+    /* Pull the dashboard down so its faded bottom overlaps the next section */
+    margin-bottom: -140px;
+    /* Real fade-to-transparent so whatever section follows shows through */
+    mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0.55) 84%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0.55) 84%, transparent 100%);
 }
 .dash {
     background: var(--bg-2);
     border: 1px solid var(--border-2);
+    border-bottom: none;
     border-radius: 14px 14px 0 0;
     overflow: hidden;
     box-shadow: 0 -30px 80px rgba(59, 130, 246, 0.15), 0 -10px 40px rgba(0,0,0,0.4);
     position: relative;
-}
-.dash::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: linear-gradient(180deg, transparent 0%, var(--bg-alt) 100%);
-    pointer-events: none;
-    z-index: 3;
 }
 .dash-chrome {
     display: flex;
@@ -426,6 +421,13 @@ section.alt {
     background: var(--bg-alt);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+}
+/* The first section after the hero (#problem) gets extra top padding
+   so the dashboard can fade into it without colliding with the heading,
+   and drops its top border so the dashboard fade is uninterrupted. */
+.hero + section.alt {
+    border-top: none;
+    padding-top: 200px;
 }
 /* In alt sections, cards lift to keep separation */
 section.alt .card,
@@ -677,6 +679,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0 36px; background: 
     section { padding: 80px 0; }
     .hero { padding-top: 140px; }
     .hero-fine { margin-bottom: 64px; }
+    .hero + section.alt { padding-top: 140px; }
+    .dash-wrap { margin-bottom: -80px; }
     .card, .step, .team-card { padding: 24px; }
 }
 

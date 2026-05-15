@@ -10,9 +10,11 @@
 <style>
 :root {
     --bg: #0a0e1a;
+    --bg-alt: #11172a;
     --bg-2: #0f1422;
     --bg-3: #141a2b;
     --card: #1a2138;
+    --card-alt: #1f263f;
     --card-2: #232b45;
     --border: rgba(255, 255, 255, 0.08);
     --border-2: rgba(255, 255, 255, 0.14);
@@ -303,7 +305,7 @@ h1.hero-h .fade {
     left: 0;
     right: 0;
     height: 120px;
-    background: linear-gradient(180deg, transparent 0%, var(--bg) 100%);
+    background: linear-gradient(180deg, transparent 0%, var(--bg-alt) 100%);
     pointer-events: none;
     z-index: 3;
 }
@@ -418,6 +420,20 @@ h1.hero-h .fade {
 
 /* ============ SECTION SCAFFOLD ============ */
 section { position: relative; padding: 120px 0; }
+
+/* ALTERNATING SECTION TONES for rhythm and contrast */
+section.alt {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+/* In alt sections, cards lift to keep separation */
+section.alt .card,
+section.alt .step,
+section.alt .team-card {
+    background: linear-gradient(180deg, var(--card-alt) 0%, #1a2138 100%);
+}
+
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -642,7 +658,7 @@ section { position: relative; padding: 120px 0; }
 .final .email-line a:hover { text-decoration: underline; }
 
 /* ============ FOOTER ============ */
-footer { border-top: 1px solid var(--border); padding: 32px 0 36px; }
+footer { border-top: 1px solid var(--border); padding: 32px 0 36px; background: var(--bg-alt); }
 .foot-inner {
     display: flex;
     flex-wrap: wrap;
@@ -797,8 +813,8 @@ h1.hero-h { animation-delay: 0.15s; }
     </div>
 </section>
 
-<!-- PROBLEM -->
-<section id="problem">
+<!-- PROBLEM (alt tone) -->
+<section id="problem" class="alt">
     <div class="wrap">
         <div class="section-head-center">
             <div class="eyebrow">The problem</div>
@@ -864,7 +880,7 @@ h1.hero-h { animation-delay: 0.15s; }
     </div>
 </section>
 
-<!-- SOLUTION -->
+<!-- SOLUTION (base tone) -->
 <section id="solution">
     <div class="wrap">
         <div class="section-head-center">
@@ -934,8 +950,8 @@ h1.hero-h { animation-delay: 0.15s; }
     </div>
 </section>
 
-<!-- OPEN SOURCE -->
-<section id="open">
+<!-- OPEN SOURCE (alt tone) -->
+<section id="open" class="alt">
     <div class="wrap">
         <div class="section-head-center">
             <div class="eyebrow">Open source</div>
@@ -976,7 +992,7 @@ h1.hero-h { animation-delay: 0.15s; }
     </div>
 </section>
 
-<!-- HOW WE WORK -->
+<!-- HOW WE WORK (base tone) -->
 <section id="how">
     <div class="wrap">
         <div class="section-head-center">
@@ -1014,8 +1030,8 @@ h1.hero-h { animation-delay: 0.15s; }
     </div>
 </section>
 
-<!-- TEAM -->
-<section id="team">
+<!-- TEAM (alt tone) -->
+<section id="team" class="alt">
     <div class="wrap">
         <div class="section-head-center">
             <div class="eyebrow">Built by practitioners</div>
@@ -1049,7 +1065,7 @@ h1.hero-h { animation-delay: 0.15s; }
     </div>
 </section>
 
-<!-- FINAL -->
+<!-- FINAL (base tone, with its own radial glow) -->
 <section class="final" id="contact">
     <div class="wrap">
         <h2>Let's talk about <span class="fade">your data</span></h2>

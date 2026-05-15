@@ -693,7 +693,7 @@ h1.hero-h { animation-delay: 0.15s; }
             <a href="#solution">Solution</a>
             <a href="#how">How we work</a>
             <a href="#team">Team</a>
-            <a href="#contact" class="cta">Schedule a call</a>
+            <a href="#" onclick="openScheduleModal();return false;" class="cta">Schedule a call</a>
         </div>
     </div>
 </nav>
@@ -709,7 +709,7 @@ h1.hero-h { animation-delay: 0.15s; }
         <p class="hero-lede">Amos helps private market firms replace fragmented systems and manual reporting with a modern data foundation that makes operations faster, reporting trustworthy, and AI actually useful.</p>
         <p class="hero-sub">We work as your independent CTO and delivery team. No vendor agenda. No proprietary lock-in. Just the infrastructure your fund should have had from day one.</p>
         <div class="cta-row">
-            <a href="#contact" class="btn btn-pri">Schedule a call</a>
+            <a href="#" onclick="openScheduleModal();return false;" class="btn btn-pri">Schedule a call</a>
             <a href="#how" class="btn btn-sec">How we work <span class="a">→</span></a>
         </div>
         <div class="hero-fine">
@@ -1054,10 +1054,9 @@ h1.hero-h { animation-delay: 0.15s; }
         <h2>Let's talk about <span class="fade">your data</span></h2>
         <p>Whether you're launching your first fund or running billions, we'll help you build the modern data layer your systems deserve.</p>
         <div class="cta-row">
-            <a href="#" class="btn btn-pri">Schedule a call</a>
+            <a href="#" onclick="openScheduleModal();return false;" class="btn btn-pri">Schedule a call</a>
             <a href="mailto:contact@amos.tech" class="btn btn-sec">Email the team <span class="a">→</span></a>
         </div>
-        <p class="email-line">or write to <a href="mailto:contact@amos.tech">contact@amos.tech</a></p>
     </div>
 </section>
 
@@ -1074,6 +1073,45 @@ h1.hero-h { animation-delay: 0.15s; }
         <div>Modernizing private markets data infrastructure</div>
     </div>
 </footer>
+
+<!-- SCHEDULE MODAL -->
+<div id="schedule-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;">
+  <div style="position:relative;width:min(680px,95vw);height:min(700px,90vh);background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.4);">
+    <button onclick="closeScheduleModal()" style="position:absolute;top:12px;right:14px;z-index:1;background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:#666;">&times;</button>
+    <iframe
+      id="schedule-iframe"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src=""
+      data-src="https://681j75m0.forms.app/form/6a06d66d7c3e242c6f7bf21b"
+      frameborder="0"
+      style="width:100%;height:100%;border:none;"
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  function openScheduleModal() {
+    var modal = document.getElementById('schedule-modal');
+    var iframe = document.getElementById('schedule-iframe');
+    if (!iframe.src || iframe.src === window.location.href) {
+      iframe.src = iframe.dataset.src;
+    }
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeScheduleModal() {
+    document.getElementById('schedule-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('schedule-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeScheduleModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeScheduleModal();
+  });
+</script>
 
 </body>
 </html>
